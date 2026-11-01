@@ -9,7 +9,7 @@ function parse(html){
   const c=$(tr).find('td').map((i,e)=>clean($(e).text())).get();
   if(c.length<2)return;
   const n=c.map(x=>x.match(/^(0|[1-9]|[12]\\d|3[0-6])$/)).find(Boolean);
-  const mm=c.join(' ').match(/(\\d[\\d.,]*)\\s*[x×]/i);
+  const mm=c.join(' ').match(/(\d[\d.,]*)\s*[x×]/i);
   const tm=c.find(x=>/\\d{1,2}[:h]\\d{2}/.test(x))||'';
   if(n)out.push({time:tm,number:Number(n[0]),multiplier:mm?Number(mm[1].replace(/[.,]/g,'')):null});
  });
